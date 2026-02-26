@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ramesh Eerapagula | Computational Biology & AI Research</title>
+  <title>Ramesh Eerapagula | Computational Biologist & AI Researcher</title>
   <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --gray: #64748b;
+      --light: #f1f5f9;
+    }
+    
     * {
       margin: 0;
       padding: 0;
@@ -12,413 +23,710 @@
     }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.7;
-      color: #2c3e50;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
     }
     
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    
-    header h1 {
-      font-size: 2.8em;
-      margin-bottom: 15px;
-      font-weight: 700;
-      letter-spacing: -1px;
-    }
-    
-    .tagline {
-      font-size: 1.2em;
-      opacity: 0.95;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    
+    /* Navigation */
     nav {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      margin-bottom: 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
     }
     
-    nav a {
-      color: #667eea;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-weight: 500;
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
-    nav a:hover {
-      background: #667eea;
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    .content {
-      background: white;
-      padding: 50px;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    
-    h2 {
-      color: #667eea;
-      font-size: 2em;
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 3px solid #667eea;
-      font-weight: 600;
-    }
-    
-    h3 {
-      color: #764ba2;
-      font-size: 1.4em;
-      margin-top: 30px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-    
-    .skill-category {
-      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-      padding: 25px;
-      border-radius: 10px;
-      border-left: 4px solid #667eea;
-    }
-    
-    .skill-category h3 {
-      margin-top: 0;
-      color: #2c3e50;
-      font-size: 1.2em;
-    }
-    
-    .skill-category ul {
+    .nav-links {
+      display: flex;
+      gap: 2rem;
       list-style: none;
-      padding-left: 0;
     }
     
-    .skill-category li {
-      padding: 8px 0;
-      padding-left: 25px;
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
       position: relative;
     }
     
-    .skill-category li:before {
-      content: "▹";
+    .nav-links a::after {
+      content: '';
       position: absolute;
+      bottom: -5px;
       left: 0;
-      color: #667eea;
-      font-weight: bold;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s;
     }
     
-    .project-card {
-      background: #f8f9fa;
-      padding: 25px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      border-left: 4px solid #764ba2;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .nav-links a:hover {
+      color: #fff;
     }
     
-    .project-card:hover {
-      transform: translateX(5px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    .nav-links a:hover::after {
+      width: 100%;
     }
     
-    .project-card strong {
-      color: #764ba2;
-      font-size: 1.15em;
-      display: block;
-      margin-bottom: 10px;
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     }
     
-    .publication-item {
-      background: #f8f9fa;
-      padding: 25px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      border-left: 4px solid #667eea;
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      border-radius: 50%;
     }
     
-    .publication-item strong {
-      color: #2c3e50;
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      border-radius: 50%;
     }
     
-    .publication-item em {
-      color: #555;
+    .hero-content {
+      max-width: 1400px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      z-index: 1;
     }
     
-    .publication-item a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #667eea;
-      text-decoration: none;
+    .hero-text h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-text p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 50px;
       font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    
-    .publication-item a:hover {
-      color: #764ba2;
-    }
-    
-    .author-badge {
-      display: inline-block;
-      background: #667eea;
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85em;
-      margin-top: 8px;
-    }
-    
-    .cv-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 15px 40px;
-      border-radius: 30px;
       text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s;
+      display: inline-block;
     }
     
-    .cv-button:hover {
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
     }
     
-    footer {
-      background: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--primary);
+    }
+    
+    .hero-visual {
+      position: relative;
+    }
+    
+    .floating-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .stat-item {
+      margin-bottom: 1.5rem;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+    
+    /* Skills Section */
+    .skills-section {
+      padding: 6rem 2rem;
+      background: var(--dark-light);
+    }
+    
+    .section-header {
+      max-width: 1400px;
+      margin: 0 auto 4rem;
       text-align: center;
     }
     
-    .contact-info {
+    .section-header h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.1rem;
+    }
+    
+    .skills-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+    
+    .skill-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    
+    .skill-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .skill-card ul {
+      list-style: none;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .skill-card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .skill-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    /* Projects Section */
+    .projects-section {
+      padding: 6rem 2rem;
+      background: var(--dark);
+    }
+    
+    .projects-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+    }
+    
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .project-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+    
+    /* Publications Section */
+    .publications-section {
+      padding: 6rem 2rem;
+      background: var(--dark-light);
+    }
+    
+    .publication-item {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    
+    .publication-item:hover {
+      transform: translateX(10px);
+      border-left-color: var(--secondary);
+      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+    }
+    
+    .pub-authors {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.5rem;
+    }
+    
+    .pub-authors strong {
+      color: var(--primary);
+    }
+    
+    .pub-title {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .pub-journal {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1rem;
+    }
+    
+    .pub-link {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .pub-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    }
+    
+    .first-author-badge {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      background: rgba(236, 72, 153, 0.2);
+      color: var(--secondary);
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 4rem 2rem;
+      background: var(--dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .social-links {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-top: 20px;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
     
-    .contact-item {
+    .social-link {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-    
-    .contact-item a {
-      color: #667eea;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: #fff;
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      transition: all 0.3s;
+      font-size: 1.5rem;
     }
     
-    .contact-item a:hover {
-      color: #764ba2;
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
     }
     
-    ul {
-      margin-left: 25px;
+    .footer-text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
     }
     
-    ul li {
-      margin-bottom: 10px;
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
     
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2em;
+    @media (max-width: 968px) {
+      .nav-links {
+        display: none;
       }
       
-      .tagline {
-        font-size: 1em;
+      .mobile-menu-btn {
+        display: block;
       }
       
-      .content {
-        padding: 30px 25px;
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
       
-      .skills-grid {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+      
+      .skills-grid,
+      .projects-grid {
         grid-template-columns: 1fr;
       }
       
-      nav {
-        flex-direction: column;
-      }
-      
-      nav a {
-        text-align: center;
+      .section-header h2 {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Ramesh Eerapagula</h1>
-      <p class="tagline">
-        PhD Research Scholar specializing in Computational Biology, Machine Learning, and Deep Learning for plant genomics and defense mechanisms
-      </p>
-    </header>
-    
-    <nav>
-      <a href="about.html">About</a>
-      <a href="skills.html">Skills & Methods</a>
-      <a href="publications.html">Publications</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research Statement</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    
-    <div class="content">
-      <h2>Core Competencies</h2>
-      
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3>Data Science & AI</h3>
-          <ul>
-            <li>Data Science with Python</li>
-            <li>Machine Learning</li>
-            <li>Deep Learning</li>
-            <li>Statistical Analysis</li>
-          </ul>
-        </div>
-        
-        <div class="skill-category">
-          <h3>Programming & Tools</h3>
-          <ul>
-            <li>Python (NumPy, Pandas, Scikit-learn)</li>
-            <li>C/C++</li>
-            <li>Bash Scripting</li>
-            <li>SLURM (HPC Management)</li>
-          </ul>
-        </div>
-        
-        <div class="skill-category">
-          <h3>Bioinformatics</h3>
-          <ul>
-            <li>Genome-wide Analysis</li>
-            <li>Phylogenetic Analysis</li>
-            <li>Expression Profiling</li>
-            <li>Protein Function Prediction</li>
-          </ul>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">RE</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Hi, I'm <span class="gradient-text">Ramesh Eerapagula</span></h1>
+        <p>PhD Research Scholar specializing in Computational Biology, Machine Learning, and Deep Learning for plant genomics and defense mechanisms.</p>
+        <div class="cta-buttons">
+          <a href="#publications" class="btn btn-primary">View Publications</a>
+          <a href="Ramesh_CV.pdf" class="btn btn-secondary">Download CV</a>
         </div>
       </div>
-      
-      <h2>Research Focus</h2>
-      <ul>
-        <li>Plant immunity and defense signaling mechanisms (PTI & ETI)</li>
-        <li>Genome-wide analysis of transcription factor and resistance gene families</li>
-        <li>Deep learning applications for gene and protein function prediction</li>
-        <li>Computational genomics and evolutionary biology</li>
-      </ul>
+      <div class="hero-visual">
+        <div class="floating-card">
+          <div class="stat-item">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Publications</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Major Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Multiple</div>
+            <div class="stat-label">Gene Families Analyzed</div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="content">
-      <h2>Featured Projects</h2>
-      
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section">
+    <div class="section-header">
+      <h2><span class="gradient-text">Core Competencies</span></h2>
+      <p>Comprehensive technical capabilities spanning computational biology and AI</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-icon">🧬</span>
+        <h3>Computational Genomics</h3>
+        <ul>
+          <li>Genome-wide gene family analysis</li>
+          <li>Phylogenetic & synteny analysis</li>
+          <li>RNA-seq expression profiling</li>
+          <li>Cis-regulatory annotation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🤖</span>
+        <h3>Machine Learning & AI</h3>
+        <ul>
+          <li>Deep learning models</li>
+          <li>Feature engineering</li>
+          <li>Gene/protein prediction</li>
+          <li>Model optimization</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">💻</span>
+        <h3>Programming & HPC</h3>
+        <ul>
+          <li>Python (NumPy, Pandas, TensorFlow)</li>
+          <li>C/C++ programming</li>
+          <li>Bash scripting</li>
+          <li>SLURM HPC workflows</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🔬</span>
+        <h3>NGS & Bioinformatics</h3>
+        <ul>
+          <li>Whole genome analysis</li>
+          <li>Variant discovery</li>
+          <li>Single-cell RNA-seq</li>
+          <li>Multi-omics integration</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌾</span>
+        <h3>Plant Biology</h3>
+        <ul>
+          <li>Plant immunity pathways</li>
+          <li>Stress response analysis</li>
+          <li>Meta-QTL analysis</li>
+          <li>Transcription factors</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">⚛️</span>
+        <h3>Structural Biology</h3>
+        <ul>
+          <li>Molecular dynamics simulations</li>
+          <li>Protein-ligand interactions</li>
+          <li>Structure-function analysis</li>
+          <li>Binding affinity prediction</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="section-header">
+      <h2><span class="gradient-text">Featured Projects</span></h2>
+      <p>Research initiatives driving innovation in computational biology</p>
+    </div>
+    <div class="projects-grid">
       <div class="project-card">
-        <strong>Genome-wide Analysis of NLR Genes in Amaranth</strong>
+        <h3>Genome-wide Analysis of NLR Genes</h3>
         <p>Comprehensive identification, phylogenetic analysis, duplication patterns, synteny mapping, and expression profiling of nucleotide-binding leucine-rich repeat genes in grain amaranth.</p>
       </div>
-      
       <div class="project-card">
-        <strong>NAC and MYB Transcription Factor Family Analysis</strong>
+        <h3>NAC & MYB Transcription Factors</h3>
         <p>Structural classification, evolutionary expansion patterns, and regulatory network analysis of key transcription factor families in plant species.</p>
       </div>
-      
       <div class="project-card">
-        <strong>Deep Learning for Plant Defense-Response Prediction</strong>
+        <h3>Deep Learning for Plant Defense</h3>
         <p>Development of neural network-based classification models with multi-layer feature engineering for predicting plant defense-response genes.</p>
       </div>
     </div>
-    
-    <div class="content">
-      <h2>Recent Publications</h2>
-      
-      <div class="publication-item">
-        <strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., & Mahato, A. K. (2025).
-        <strong>Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features.</strong>
-        <em>Scientific Reports</em>, <strong>15</strong>(1), 39968.
-        <a href="https://doi.org/10.1038/s41598-025-23630-7" target="_blank">View Publication →</a>
-        <div class="author-badge">First Author</div>
+  </section>
+
+  <!-- Publications Section -->
+  <section id="publications" class="publications-section">
+    <div class="section-header">
+      <h2><span class="gradient-text">Recent Publications</span></h2>
+      <p>Peer-reviewed research contributions in computational biology</p>
+    </div>
+    <div class="publication-item">
+      <div class="pub-authors">
+        <strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., & Mahato, A. K.
       </div>
-      
-      <div class="publication-item">
-        Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., & Sen, P. (2026).
-        <strong>6-O-acetyldaidzein and frangulin B from <em>Halodule uninervis</em> as novel α-amylase inhibitors: A molecular dynamics perspective.</strong>
-        <em>Computational Biology and Chemistry</em>, <strong>121</strong>, 108848.
-        <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848" target="_blank">View Publication →</a>
+      <div class="pub-title">
+        Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features.
       </div>
-      
-      <div class="publication-item">
-        Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., <em>et al.</em> (2025).
-        <strong>Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy.</strong>
-        <em>Journal of Neonatal Surgery</em>, <strong>14</strong>(13S), 1066–1077.
-        <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935" target="_blank">View Publication →</a>
+      <div class="pub-journal">
+        <em>Scientific Reports</em>, 15(1), 39968. (2025)
       </div>
-      
-      <div class="publication-item">
-        Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, <em>et al.</em> (2025).
-        <strong>Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum (<em>Sorghum bicolor</em> L. Moench) through meta-QTL analysis.</strong>
-        <em>Cereal Research Communications</em>, <strong>53</strong>(2), 757–769.
-        <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5" target="_blank">View Publication →</a>
-      </div>
+      <a href="https://doi.org/10.1038/s41598-025-23630-7" class="pub-link" target="_blank">View Publication</a>
+      <span class="first-author-badge">First Author</span>
     </div>
     
-    <div class="content" style="text-align: center;">
-      <h2>Curriculum Vitae</h2>
-      <p style="margin-bottom: 25px;">Download my complete academic and research profile</p>
-      <a href="Ramesh_CV.pdf" class="cv-button">Download CV (PDF)</a>
+    <div class="publication-item">
+      <div class="pub-authors">
+        Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., & Sen, P.
+      </div>
+      <div class="pub-title">
+        6-O-acetyldaidzein and frangulin B from Halodule uninervis as novel α-amylase inhibitors: A molecular dynamics perspective.
+      </div>
+      <div class="pub-journal">
+        <em>Computational Biology and Chemistry</em>, 121, 108848. (2026)
+      </div>
+      <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848" class="pub-link" target="_blank">View Publication</a>
     </div>
     
-    <footer>
-      <h3 style="color: #2c3e50; margin-bottom: 20px;">Let's Connect</h3>
-      <div class="contact-info">
-        <div class="contact-item">
-          <span>🔗</span>
-          <a href="https://github.com/Ramesh5591" target="_blank">github.com/Ramesh5591</a>
-        </div>
-        <div class="contact-item">
-          <span>📧</span>
-          <a href="mailto:ramesheerapagula76@gmail.com">ramesheerapagula76@gmail.com</a>
-        </div>
+    <div class="publication-item">
+      <div class="pub-authors">
+        Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., et al.
       </div>
-    </footer>
-  </div>
+      <div class="pub-title">
+        Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy.
+      </div>
+      <div class="pub-journal">
+        <em>Journal of Neonatal Surgery</em>, 14(13S), 1066–1077. (2025)
+      </div>
+      <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935" class="pub-link" target="_blank">View Publication</a>
+    </div>
+    
+    <div class="publication-item">
+      <div class="pub-authors">
+        Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, et al.
+      </div>
+      <div class="pub-title">
+        Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum through meta-QTL analysis.
+      </div>
+      <div class="pub-journal">
+        <em>Cereal Research Communications</em>, 53(2), 757–769. (2025)
+      </div>
+      <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5" class="pub-link" target="_blank">View Publication</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <h2 style="margin-bottom: 1rem;"><span class="gradient-text">Let's Connect</span></h2>
+      <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 2rem;">Open to collaborations and research opportunities</p>
+      <div class="social-links">
+        <a href="mailto:ramesheerapagula76@gmail.com" class="social-link" title="Email">📧</a>
+        <a href="https://github.com/Ramesh5591" class="social-link" target="_blank" title="GitHub">💻</a>
+      </div>
+      <p class="footer-text">© 2025 Ramesh Eerapagula. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
