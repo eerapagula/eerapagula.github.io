@@ -29,7 +29,7 @@
       overflow-x: hidden;
     }
     
-    /* Navigation */
+    /* Navigation - CONSISTENT ACROSS ALL PAGES */
     nav {
       position: fixed;
       top: 0;
@@ -56,6 +56,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-decoration: none;
     }
     
     .nav-links {
@@ -72,6 +73,10 @@
       position: relative;
     }
     
+    .nav-links a.active {
+      color: #fff;
+    }
+    
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -83,11 +88,13 @@
       transition: width 0.3s;
     }
     
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: #fff;
     }
     
-    .nav-links a:hover::after {
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
       width: 100%;
     }
     
@@ -227,48 +234,41 @@
       font-size: 0.9rem;
     }
     
-    /* Skills Section */
-    .skills-section {
+    /* Quick Links Section */
+    .quick-links {
       padding: 6rem 2rem;
       background: var(--dark-light);
     }
     
-    .section-header {
-      max-width: 1400px;
-      margin: 0 auto 4rem;
+    .section-title {
       text-align: center;
-    }
-    
-    .section-header h2 {
       font-size: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
     }
     
-    .section-header p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 1.1rem;
-    }
-    
-    .skills-grid {
+    .links-grid {
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
     
-    .skill-card {
+    .link-card {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
       padding: 2.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
     }
     
-    .skill-card::before {
+    .link-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -280,158 +280,35 @@
       transition: transform 0.3s;
     }
     
-    .skill-card:hover {
+    .link-card:hover {
       transform: translateY(-10px);
       border-color: var(--primary);
       box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
     }
     
-    .skill-card:hover::before {
+    .link-card:hover::before {
       transform: scaleX(1);
     }
     
-    .skill-icon {
+    .link-icon {
       font-size: 3rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       display: block;
     }
     
-    .skill-card h3 {
+    .link-card h3 {
       font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-    
-    .skill-card ul {
-      list-style: none;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    
-    .skill-card li {
-      padding: 0.5rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-    
-    .skill-card li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-    
-    /* Projects Section */
-    .projects-section {
-      padding: 6rem 2rem;
-      background: var(--dark);
-    }
-    
-    .projects-grid {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-    
-    .project-card {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2.5rem;
-      transition: all 0.3s;
-    }
-    
-    .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
-    }
-    
-    .project-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    .project-card p {
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-    }
-    
-    /* Publications Section */
-    .publications-section {
-      padding: 6rem 2rem;
-      background: var(--dark-light);
-    }
-    
-    .publication-item {
-      max-width: 1200px;
-      margin: 0 auto 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-left: 4px solid var(--primary);
-      border-radius: 15px;
-      padding: 2rem;
-      transition: all 0.3s;
-    }
-    
-    .publication-item:hover {
-      transform: translateX(10px);
-      border-left-color: var(--secondary);
-      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
-    }
-    
-    .pub-authors {
-      color: rgba(255, 255, 255, 0.8);
       margin-bottom: 0.5rem;
     }
     
-    .pub-authors strong {
-      color: var(--primary);
-    }
-    
-    .pub-title {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    
-    .pub-journal {
+    .link-card p {
       color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 1rem;
-    }
-    
-    .pub-link {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #fff;
-      text-decoration: none;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      transition: all 0.3s;
-    }
-    
-    .pub-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
-    }
-    
-    .first-author-badge {
-      display: inline-block;
-      padding: 0.3rem 1rem;
-      background: rgba(236, 72, 153, 0.2);
-      color: var(--secondary);
-      border-radius: 15px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-left: 1rem;
+      font-size: 0.95rem;
     }
     
     /* Footer */
     footer {
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
       background: var(--dark);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       text-align: center;
@@ -446,7 +323,7 @@
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     
     .social-link {
@@ -475,7 +352,7 @@
       font-size: 0.9rem;
     }
     
-    /* Mobile Menu */
+    /* Mobile Responsive */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -507,13 +384,12 @@
         justify-content: center;
       }
       
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
+      .section-title {
+        font-size: 2rem;
       }
       
-      .section-header h2 {
-        font-size: 2rem;
+      .links-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -522,26 +398,28 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <div class="logo">RE</div>
+      <a href="index.html" class="logo">RE</a>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <button class="mobile-menu-btn">☰</button>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="hero">
+  <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
         <h1>Hi, I'm <span class="gradient-text">Ramesh Eerapagula</span></h1>
         <p>PhD Research Scholar specializing in Computational Biology, Machine Learning, and Deep Learning for plant genomics and defense mechanisms.</p>
         <div class="cta-buttons">
-          <a href="#publications" class="btn btn-primary">View Publications</a>
+          <a href="publications.html" class="btn btn-primary">View Publications</a>
           <a href="Ramesh_CV.pdf" class="btn btn-secondary">Download CV</a>
         </div>
       </div>
@@ -564,163 +442,51 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="skills-section">
-    <div class="section-header">
-      <h2><span class="gradient-text">Core Competencies</span></h2>
-      <p>Comprehensive technical capabilities spanning computational biology and AI</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <span class="skill-icon"></span>
-        <h3>Computational Genomics</h3>
-        <ul>
-          <li>Genome-wide gene family analysis</li>
-          <li>Phylogenetic & synteny analysis</li>
-          <li>RNA-seq expression profiling</li>
-          <li>Cis-regulatory annotation</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon"></span>
-        <h3>Machine Learning & AI</h3>
-        <ul>
-          <li>Deep learning models</li>
-          <li>Feature engineering</li>
-          <li>Gene/protein prediction</li>
-          <li>Model optimization</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon"></span>
-        <h3>Programming & HPC</h3>
-        <ul>
-          <li>Python (NumPy, Pandas, TensorFlow)</li>
-          <li>C/C++ programming</li>
-          <li>Bash scripting</li>
-          <li>SLURM HPC workflows</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon"></span>
-        <h3>NGS & Bioinformatics</h3>
-        <ul>
-          <li>Whole genome analysis</li>
-          <li>Variant discovery</li>
-          <li>Single-cell RNA-seq</li>
-          <li>Multi-omics integration</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon"></span>
-        <h3>Plant Biology</h3>
-        <ul>
-          <li>Plant immunity pathways</li>
-          <li>Stress response analysis</li>
-          <li>Meta-QTL analysis</li>
-          <li>Transcription factors</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <span class="skill-icon"></span>
-        <h3>Structural Biology</h3>
-        <ul>
-          <li>Molecular dynamics simulations</li>
-          <li>Protein-ligand interactions</li>
-          <li>Structure-function analysis</li>
-          <li>Binding affinity prediction</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section">
-    <div class="section-header">
-      <h2><span class="gradient-text">Featured Projects</span></h2>
-      <p>Research initiatives driving innovation in computational biology</p>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Genome-wide Analysis of NLR Genes</h3>
-        <p>Comprehensive identification, phylogenetic analysis, duplication patterns, synteny mapping, and expression profiling of nucleotide-binding leucine-rich repeat genes in grain amaranth.</p>
-      </div>
-      <div class="project-card">
-        <h3>NAC & MYB Transcription Factors</h3>
-        <p>Structural classification, evolutionary expansion patterns, and regulatory network analysis of key transcription factor families in plant species.</p>
-      </div>
-      <div class="project-card">
-        <h3>Deep Learning for Plant Defense</h3>
-        <p>Development of neural network-based classification models with multi-layer feature engineering for predicting plant defense-response genes.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications Section -->
-  <section id="publications" class="publications-section">
-    <div class="section-header">
-      <h2><span class="gradient-text">Recent Publications</span></h2>
-      <p>Peer-reviewed research contributions in computational biology</p>
-    </div>
-    <div class="publication-item">
-      <div class="pub-authors">
-        <strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., & Mahato, A. K.
-      </div>
-      <div class="pub-title">
-        Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features.
-      </div>
-      <div class="pub-journal">
-        <em>Scientific Reports</em>, 15(1), 39968. (2025)
-      </div>
-      <a href="https://doi.org/10.1038/s41598-025-23630-7" class="pub-link" target="_blank">View Publication</a>
-      <span class="first-author-badge">First Author</span>
-    </div>
-    
-    <div class="publication-item">
-      <div class="pub-authors">
-        Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., & Sen, P.
-      </div>
-      <div class="pub-title">
-        6-O-acetyldaidzein and frangulin B from Halodule uninervis as novel α-amylase inhibitors: A molecular dynamics perspective.
-      </div>
-      <div class="pub-journal">
-        <em>Computational Biology and Chemistry</em>, 121, 108848. (2026)
-      </div>
-      <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848" class="pub-link" target="_blank">View Publication</a>
-    </div>
-    
-    <div class="publication-item">
-      <div class="pub-authors">
-        Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., et al.
-      </div>
-      <div class="pub-title">
-        Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy.
-      </div>
-      <div class="pub-journal">
-        <em>Journal of Neonatal Surgery</em>, 14(13S), 1066–1077. (2025)
-      </div>
-      <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935" class="pub-link" target="_blank">View Publication</a>
-    </div>
-    
-    <div class="publication-item">
-      <div class="pub-authors">
-        Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, et al.
-      </div>
-      <div class="pub-title">
-        Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum through meta-QTL analysis.
-      </div>
-      <div class="pub-journal">
-        <em>Cereal Research Communications</em>, 53(2), 757–769. (2025)
-      </div>
-      <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5" class="pub-link" target="_blank">View Publication</a>
+  <!-- Quick Links -->
+  <section class="quick-links">
+    <h2 class="section-title"><span class="gradient-text">Explore My Work</span></h2>
+    <div class="links-grid">
+      <a href="about.html" class="link-card">
+        <span class="link-icon"></span>
+        <h3>About Me</h3>
+        <p>Learn about my research journey and academic background</p>
+      </a>
+      
+      <a href="skills.html" class="link-card">
+        <span class="link-icon"></span>
+        <h3>Skills & Expertise</h3>
+        <p>Technical capabilities in computational biology and AI</p>
+      </a>
+      
+      <a href="projects.html" class="link-card">
+        <span class="link-icon"></span>
+        <h3>Projects</h3>
+        <p>Featured research projects and initiatives</p>
+      </a>
+      
+      <a href="publications.html" class="link-card">
+        <span class="link-icon"></span>
+        <h3>Publications</h3>
+        <p>Peer-reviewed research contributions</p>
+      </a>
+      
+      <a href="research.html" class="link-card">
+        <span class="link-icon"></span>
+        <h3>Research Statement</h3>
+        <p>My vision for computational plant biology</p>
+      </a>
+      
+      <a href="contact.html" class="link-card">
+        <span class="link-icon"></span>
+        <h3>Contact</h3>
+        <p>Let's collaborate and connect</p>
+      </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="contact">
+  <footer>
     <div class="footer-content">
-      <h2 style="margin-bottom: 1rem;"><span class="gradient-text">Let's Connect</span></h2>
-      <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 2rem;">Open to collaborations and research opportunities</p>
       <div class="social-links">
         <a href="mailto:ramesheerapagula76@gmail.com" class="social-link" title="Email">📧</a>
         <a href="https://github.com/Ramesh5591" class="social-link" target="_blank" title="GitHub">💻</a>

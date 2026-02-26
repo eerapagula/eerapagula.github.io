@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Research Statement | Ramesh Eerapagula</title>
   <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+    }
+    
     * {
       margin: 0;
       padding: 0;
@@ -12,132 +20,166 @@
     }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.8;
-      color: #2c3e50;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      padding: 20px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.7;
     }
     
-    .container {
-      max-width: 1000px;
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-container {
+      max-width: 1400px;
       margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #667eea;
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       font-weight: 500;
-      padding: 12px 24px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      margin-bottom: 30px;
+      transition: all 0.3s;
+      position: relative;
     }
     
-    .back-button:hover {
-      transform: translateX(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s;
     }
     
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 60px 40px;
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    /* Page Header */
+    .page-header {
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
       text-align: center;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
     }
     
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 15px;
-      font-weight: 700;
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+      top: -150px;
+      right: -150px;
+      border-radius: 50%;
     }
     
-    .subtitle {
-      font-size: 1.15em;
-      opacity: 0.95;
-      max-width: 800px;
+    .page-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .page-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
       margin: 0 auto;
     }
     
+    /* Content */
     .content {
-      background: white;
-      padding: 50px;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
     }
     
     .opening-statement {
-      font-size: 1.25em;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      font-size: 1.15rem;
       line-height: 1.9;
-      color: #34495e;
-      margin-bottom: 50px;
-      padding: 35px;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      border-radius: 12px;
-      border-left: 5px solid #667eea;
-    }
-    
-    .opening-statement::first-letter {
-      font-size: 3.5em;
-      font-weight: bold;
-      float: left;
-      line-height: 0.85;
-      margin-right: 12px;
-      color: #667eea;
+      color: rgba(255, 255, 255, 0.9);
     }
     
     h2 {
-      color: #667eea;
-      font-size: 1.9em;
-      margin-top: 50px;
-      margin-bottom: 25px;
-      padding-bottom: 12px;
-      border-bottom: 3px solid #667eea;
-      font-weight: 600;
+      font-size: 2.5rem;
+      margin-top: 4rem;
+      margin-bottom: 2rem;
     }
     
     h2:first-of-type {
       margin-top: 0;
     }
     
-    h3 {
-      color: #764ba2;
-      font-size: 1.4em;
-      margin-top: 35px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    
     p {
-      margin-bottom: 20px;
-      color: #34495e;
-      font-size: 1.05em;
-      text-align: justify;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
     }
     
     .research-pillars {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin: 40px 0;
+      gap: 2rem;
+      margin: 3rem 0;
     }
     
     .pillar-card {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 30px;
-      border-radius: 12px;
-      border-top: 4px solid #667eea;
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.3s;
       position: relative;
       overflow: hidden;
     }
@@ -148,129 +190,119 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.3s;
     }
     
     .pillar-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
     }
     
     .pillar-card:hover::before {
-      opacity: 1;
+      transform: scaleX(1);
     }
     
     .pillar-icon {
-      font-size: 2.5em;
-      margin-bottom: 15px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       display: block;
     }
     
     .pillar-card h3 {
-      color: #2c3e50;
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 1.3em;
-      position: relative;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
     
     .pillar-card p {
-      color: #555;
-      font-size: 0.98em;
-      margin-bottom: 0;
-      text-align: left;
-    }
-    
-    .highlight-box {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 35px;
-      border-radius: 12px;
-      margin: 40px 0;
-      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
-    }
-    
-    .highlight-box h3 {
-      color: white;
-      margin-top: 0;
-      font-size: 1.5em;
-      margin-bottom: 15px;
-    }
-    
-    .highlight-box p {
-      color: white;
-      opacity: 0.95;
-      margin-bottom: 15px;
-    }
-    
-    .highlight-box p:last-child {
-      margin-bottom: 0;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin: 0;
     }
     
     .objectives-list {
       list-style: none;
-      padding-left: 0;
-      margin: 30px 0;
+      margin: 2rem 0;
     }
     
     .objectives-list li {
-      padding: 20px;
-      margin-bottom: 15px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      border-left: 4px solid #764ba2;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem;
+      padding-left: 3rem;
+      margin-bottom: 1rem;
       position: relative;
-      padding-left: 50px;
-      transition: all 0.3s ease;
-    }
-    
-    .objectives-list li:hover {
-      transform: translateX(5px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
     }
     
     .objectives-list li::before {
-      content: "→";
+      content: '→';
       position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #764ba2;
-      font-size: 1.5em;
+      left: 1.2rem;
+      color: var(--accent);
+      font-size: 1.5rem;
       font-weight: bold;
+    }
+    
+    .objectives-list li:hover {
+      transform: translateX(10px);
+      border-left-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--secondary);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+    }
+    
+    .highlight-box h3 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .highlight-box p {
+      margin-bottom: 1.2rem;
+    }
+    
+    .highlight-box p strong {
+      color: var(--accent);
     }
     
     .timeline {
       position: relative;
-      padding-left: 50px;
-      margin: 40px 0;
+      padding-left: 3rem;
+      margin: 3rem 0;
     }
     
     .timeline::before {
       content: '';
       position: absolute;
-      left: 15px;
+      left: 10px;
       top: 0;
       bottom: 0;
       width: 3px;
-      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
     }
     
     .timeline-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
       position: relative;
-      margin-bottom: 40px;
-      padding: 25px;
-      background: #f8f9fa;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-    
-    .timeline-item:hover {
-      background: #e9ecef;
-      transform: translateX(5px);
+      transition: all 0.3s;
     }
     
     .timeline-item::before {
@@ -281,237 +313,270 @@
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: #667eea;
-      border: 4px solid white;
-      box-shadow: 0 0 0 3px #667eea;
+      background: var(--primary);
+      border: 4px solid var(--dark);
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+    
+    .timeline-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(10px);
     }
     
     .timeline-item h3 {
-      margin-top: 0;
-      color: #2c3e50;
-      font-size: 1.25em;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
     
     .timeline-item p {
-      margin-bottom: 0;
+      margin: 0;
     }
     
     .impact-section {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 40px;
-      border-radius: 12px;
-      margin: 40px 0;
-      border: 2px solid #e3e6ea;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem 0;
     }
     
     .impact-section h3 {
-      color: #667eea;
-      margin-top: 0;
+      font-size: 2rem;
       text-align: center;
-      font-size: 1.6em;
+      margin-bottom: 2.5rem;
     }
     
     .impact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
     }
     
     .impact-item {
       text-align: center;
-      padding: 20px;
     }
     
     .impact-icon {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
       display: block;
+      margin-bottom: 1rem;
     }
     
     .impact-item h4 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-      font-size: 1.1em;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
     }
     
     .impact-item p {
-      color: #555;
-      font-size: 0.95em;
+      font-size: 0.95rem;
       margin: 0;
     }
     
-    @media (max-width: 768px) {
-      .content {
-        padding: 30px 25px;
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      background: var(--dark-light);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .footer-text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+    
+    /* Mobile */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 968px) {
+      .nav-links {
+        display: none;
       }
       
-      header {
-        padding: 40px 25px;
+      .mobile-menu-btn {
+        display: block;
       }
       
-      header h1 {
-        font-size: 2em;
+      .page-header h1 {
+        font-size: 2.5rem;
       }
       
-      .opening-statement {
-        font-size: 1.1em;
-        padding: 25px;
+      h2 {
+        font-size: 2rem;
       }
       
-      .research-pillars {
+      .research-pillars,
+      .impact-grid {
         grid-template-columns: 1fr;
       }
       
       .timeline {
-        padding-left: 40px;
-      }
-      
-      .timeline-item {
-        padding: 20px;
-      }
-      
-      p {
-        text-align: left;
+        padding-left: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="index.html" class="back-button">
-      <span>←</span> Back to Home
-    </a>
-    
-    <header>
-      <h1>Research Statement</h1>
-      <p class="subtitle">Bridging computational biology and artificial intelligence to advance plant science</p>
-    </header>
-    
-    <div class="content">
-      <div class="opening-statement">
-        My research interests lie at the dynamic intersection of plant genomics, computational biology, and artificial intelligence. I am driven by the conviction that understanding the molecular complexity of plant systems requires innovative computational approaches that can extract meaningful patterns from vast genomic datasets and translate these insights into actionable knowledge for crop improvement and sustainable agriculture.
-      </div>
-      
-      <h2>Research Philosophy</h2>
-      <p>
-        The grand challenges facing global agriculture—climate change, emerging plant pathogens, and food security—demand interdisciplinary solutions that leverage cutting-edge computational methods. My work is founded on the principle that by integrating genome-wide analyses with machine learning and deep learning models, we can uncover the fundamental mechanisms governing plant defense and stress responses, ultimately accelerating the development of resilient crop varieties.
-      </p>
-      
-      <h2>Current Research Focus</h2>
-      
-      <div class="research-pillars">
-        <div class="pillar-card">
-          <span class="pillar-icon"></span>
-          <h3>Plant Defense Mechanisms</h3>
-          <p>Investigating the molecular architecture of plant immunity through genome-wide characterization of resistance gene families (NLRs) and transcription factors (NAC, MYB), focusing on pattern-triggered immunity (PTI) and effector-triggered immunity (ETI) pathways.</p>
-        </div>
-        
-        <div class="pillar-card">
-          <span class="pillar-icon"></span>
-          <h3>Computational Genomics</h3>
-          <p>Employing advanced bioinformatics pipelines to conduct comprehensive analyses of gene families, including phylogenetic reconstruction, synteny mapping, gene duplication patterns, and cis-regulatory element identification across diverse plant species.</p>
-        </div>
-        
-        <div class="pillar-card">
-          <span class="pillar-icon"></span>
-          <h3>AI-Driven Prediction</h3>
-          <p>Developing deep learning architectures for predicting gene function, protein-protein interactions, and stress response pathways. My models incorporate multi-layer feature engineering from sequence, structure, and expression data to achieve robust predictions.</p>
-        </div>
-        
-        <div class="pillar-card">
-          <span class="pillar-icon"></span>
-          <h3>Agronomic Applications</h3>
-          <p>Translating computational discoveries into practical breeding applications through meta-QTL analysis and identification of genetic markers associated with stress tolerance and yield-related traits in economically important crops.</p>
-        </div>
-      </div>
-      
-      <h2>Research Objectives</h2>
-      <ul class="objectives-list">
-        <li>Develop comprehensive genomic resources for understanding plant defense gene families and their evolutionary trajectories across major crop species</li>
-        <li>Build interpretable machine learning models that can predict gene function and regulatory networks from multi-omics data with high accuracy</li>
-        <li>Characterize stress-responsive transcriptional regulatory networks and identify key master regulators of plant defense pathways</li>
-        <li>Integrate computational predictions with experimental validation to establish functional relationships between genotype and phenotype</li>
-        <li>Create scalable bioinformatics workflows that can be applied to non-model crop species with limited genomic resources</li>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">RE</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-      
-      <h2>Future Directions</h2>
-      
-      <div class="highlight-box">
-        <h3>Post-Doctoral Research Vision</h3>
-        <p>
-          During my post-doctoral training, I aim to develop scalable and interpretable AI models specifically designed for plant stress biology. My vision encompasses three major directions:
-        </p>
-        <p>
-          <strong>First,</strong> creating foundation models for plant genomics that can transfer knowledge across species and predict functional elements in newly sequenced genomes with minimal training data.
-        </p>
-        <p>
-          <strong>Second,</strong> developing explainable AI frameworks that not only achieve high predictive accuracy but also provide biological interpretability, enabling researchers to understand the underlying mechanisms driving model predictions.
-        </p>
-        <p>
-          <strong>Third,</strong> establishing integrative platforms that combine genomics, transcriptomics, proteomics, and metabolomics data to generate holistic models of plant stress responses that can guide precision breeding strategies.
-        </p>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><span class="gradient-text">Research Statement</span></h1>
+    <p>Bridging computational biology and artificial intelligence to advance plant science</p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="opening-statement">
+      My research interests lie at the dynamic intersection of plant genomics, computational biology, and artificial intelligence. I am driven by the conviction that understanding the molecular complexity of plant systems requires innovative computational approaches that can extract meaningful patterns from vast genomic datasets and translate these insights into actionable knowledge for crop improvement and sustainable agriculture.
+    </div>
+    
+    <h2><span class="gradient-text">Research Philosophy</span></h2>
+    <p>
+      The grand challenges facing global agriculture—climate change, emerging plant pathogens, and food security—demand interdisciplinary solutions that leverage cutting-edge computational methods. My work is founded on the principle that by integrating genome-wide analyses with machine learning and deep learning models, we can uncover the fundamental mechanisms governing plant defense and stress responses, ultimately accelerating the development of resilient crop varieties.
+    </p>
+    
+    <h2><span class="gradient-text">Current Research Focus</span></h2>
+    <div class="research-pillars">
+      <div class="pillar-card">
+        <span class="pillar-icon">🧬</span>
+        <h3>Plant Defense Mechanisms</h3>
+        <p>Investigating the molecular architecture of plant immunity through genome-wide characterization of resistance gene families (NLRs) and transcription factors (NAC, MYB), focusing on pattern-triggered immunity (PTI) and effector-triggered immunity (ETI) pathways.</p>
       </div>
       
-      <h2>Research Timeline</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>Current Phase: PhD Research</h3>
-          <p>Conducting genome-wide analyses of transcription factor families and resistance genes in grain amaranth. Developing deep learning models for defense-response gene prediction. Publishing findings in peer-reviewed journals.</p>
-        </div>
-        
-        <div class="timeline-item">
-          <h3>Near-Term Goals</h3>
-          <p>Complete comprehensive characterization of multiple gene families. Refine machine learning pipelines for improved prediction accuracy. Establish collaborations with experimental labs for model validation.</p>
-        </div>
-        
-        <div class="timeline-item">
-          <h3>Post-Doctoral Phase</h3>
-          <p>Develop next-generation AI models for plant genomics. Build interpretable frameworks for biological insight extraction. Create tools and databases for the broader plant science community. Mentor students and contribute to open-source bioinformatics initiatives.</p>
-        </div>
-        
-        <div class="timeline-item">
-          <h3>Long-Term Vision</h3>
-          <p>Establish an independent research program at the intersection of AI and plant biology. Lead efforts to develop climate-resilient crop varieties through computational design. Bridge the gap between computational predictions and agricultural implementation.</p>
-        </div>
+      <div class="pillar-card">
+        <span class="pillar-icon">🔬</span>
+        <h3>Computational Genomics</h3>
+        <p>Employing advanced bioinformatics pipelines to conduct comprehensive analyses of gene families, including phylogenetic reconstruction, synteny mapping, gene duplication patterns, and cis-regulatory element identification across diverse plant species.</p>
       </div>
       
-      <div class="impact-section">
-        <h3>Anticipated Research Impact</h3>
-        <div class="impact-grid">
-          <div class="impact-item">
-            <span class="impact-icon">🌍</span>
-            <h4>Global Agriculture</h4>
-            <p>Contributing to food security through improved crop resilience</p>
-          </div>
-          <div class="impact-item">
-            <span class="impact-icon">🔬</span>
-            <h4>Scientific Knowledge</h4>
-            <p>Advancing understanding of plant molecular systems</p>
-          </div>
-          <div class="impact-item">
-            <span class="impact-icon">💻</span>
-            <h4>Computational Tools</h4>
-            <p>Creating accessible resources for the research community</p>
-          </div>
-          <div class="impact-item">
-            <span class="impact-icon">🎓</span>
-            <h4>Training & Education</h4>
-            <p>Mentoring next generation of computational biologists</p>
-          </div>
-        </div>
+      <div class="pillar-card">
+        <span class="pillar-icon">🤖</span>
+        <h3>AI-Driven Prediction</h3>
+        <p>Developing deep learning architectures for predicting gene function, protein-protein interactions, and stress response pathways. My models incorporate multi-layer feature engineering from sequence, structure, and expression data to achieve robust predictions.</p>
       </div>
       
-      <h2>Collaborative Approach</h2>
+      <div class="pillar-card">
+        <span class="pillar-icon">🌾</span>
+        <h3>Agronomic Applications</h3>
+        <p>Translating computational discoveries into practical breeding applications through meta-QTL analysis and identification of genetic markers associated with stress tolerance and yield-related traits in economically important crops.</p>
+      </div>
+    </div>
+    
+    <h2><span class="gradient-text">Research Objectives</span></h2>
+    <ul class="objectives-list">
+      <li>Develop comprehensive genomic resources for understanding plant defense gene families and their evolutionary trajectories across major crop species</li>
+      <li>Build interpretable machine learning models that can predict gene function and regulatory networks from multi-omics data with high accuracy</li>
+      <li>Characterize stress-responsive transcriptional regulatory networks and identify key master regulators of plant defense pathways</li>
+      <li>Integrate computational predictions with experimental validation to establish functional relationships between genotype and phenotype</li>
+      <li>Create scalable bioinformatics workflows that can be applied to non-model crop species with limited genomic resources</li>
+    </ul>
+    
+    <h2><span class="gradient-text">Future Directions</span></h2>
+    <div class="highlight-box">
+      <h3>Post-Doctoral Research Vision</h3>
       <p>
-        I believe that transformative advances in plant science emerge from collaborative efforts that bring together diverse expertise. My research naturally interfaces with experimental plant biologists, molecular geneticists, agronomists, and computer scientists. I am committed to fostering interdisciplinary collaborations that accelerate discovery and translation of computational insights into practical agricultural solutions.
+        During my post-doctoral training, I aim to develop scalable and interpretable AI models specifically designed for plant stress biology. My vision encompasses three major directions:
       </p>
-      
-      <h2>Conclusion</h2>
       <p>
-        As computational power continues to grow and sequencing costs decline, we stand at the threshold of a new era in plant biology where AI-driven approaches can dramatically accelerate our understanding of complex biological systems. My research program aims to harness these opportunities to address fundamental questions about plant defense mechanisms while simultaneously developing practical tools for crop improvement. I am excited about the potential to contribute meaningfully to both basic plant science and applied agriculture through innovative computational approaches.
+        <strong>First,</strong> creating foundation models for plant genomics that can transfer knowledge across species and predict functional elements in newly sequenced genomes with minimal training data.
+      </p>
+      <p>
+        <strong>Second,</strong> developing explainable AI frameworks that not only achieve high predictive accuracy but also provide biological interpretability, enabling researchers to understand the underlying mechanisms driving model predictions.
+      </p>
+      <p>
+        <strong>Third,</strong> establishing integrative platforms that combine genomics, transcriptomics, proteomics, and metabolomics data to generate holistic models of plant stress responses that can guide precision breeding strategies.
       </p>
     </div>
+    
+    <h2><span class="gradient-text">Research Timeline</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Current Phase: PhD Research</h3>
+        <p>Conducting genome-wide analyses of transcription factor families and resistance genes in grain amaranth and other crops. Developing deep learning models for defense-response gene prediction. Publishing findings in peer-reviewed journals.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3>Near-Term Goals (1-2 years)</h3>
+        <p>Complete comprehensive characterization of multiple gene families across diverse plant species. Refine machine learning pipelines for improved prediction accuracy. Establish collaborations with experimental labs for model validation.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3>Post-Doctoral Phase (3-5 years)</h3>
+        <p>Develop next-generation AI models for plant genomics. Build interpretable frameworks for biological insight extraction. Create tools and databases for the broader plant science community. Mentor students and contribute to open-source bioinformatics initiatives.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3>Long-Term Vision (5+ years)</h3>
+        <p>Establish an independent research program at the intersection of AI and plant biology. Lead efforts to develop climate-resilient crop varieties through computational design. Bridge the gap between computational predictions and agricultural implementation.</p>
+      </div>
+    </div>
+    
+    <div class="impact-section">
+      <h3><span class="gradient-text">Anticipated Research Impact</span></h3>
+      <div class="impact-grid">
+        <div class="impact-item">
+          <span class="impact-icon"></span>
+          <h4>Global Agriculture</h4>
+          <p>Contributing to food security through improved crop resilience</p>
+        </div>
+        <div class="impact-item">
+          <span class="impact-icon"></span>
+          <h4>Scientific Knowledge</h4>
+          <p>Advancing understanding of plant molecular systems</p>
+        </div>
+        <div class="impact-item">
+          <span class="impact-icon"></span>
+          <h4>Computational Tools</h4>
+          <p>Creating accessible resources for the research community</p>
+        </div>
+        <div class="impact-item">
+          <span class="impact-icon">🎓</span>
+          <h4>Training & Education</h4>
+          <p>Mentoring next generation of computational biologists</p>
+        </div>
+      </div>
+    </div>
+    
+    <h2><span class="gradient-text">Collaborative Approach</span></h2>
+    <p>
+      I believe that transformative advances in plant science emerge from collaborative efforts that bring together diverse expertise. My research naturally interfaces with experimental plant biologists, molecular geneticists, agronomists, and computer scientists. I am committed to fostering interdisciplinary collaborations that accelerate discovery and translation of computational insights into practical agricultural solutions.
+    </p>
+    
+    <h2><span class="gradient-text">Conclusion</span></h2>
+    <p>
+      As computational power continues to grow and sequencing costs decline, we stand at the threshold of a new era in plant biology where AI-driven approaches can dramatically accelerate our understanding of complex biological systems. My research program aims to harness these opportunities to address fundamental questions about plant defense mechanisms while simultaneously developing practical tools for crop improvement. I am excited about the potential to contribute meaningfully to both basic plant science and applied agriculture through innovative computational approaches.
+    </p>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-text">© 2025 Ramesh Eerapagula. All rights reserved.</p>
+  </footer>
 </body>
 </html>
