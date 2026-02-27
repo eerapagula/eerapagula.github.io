@@ -1,28 +1,466 @@
-<!DOCTYPE html><html><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Publications | Ramesh Eerapagula</title>
-<link rel="stylesheet" href="assets/style.css"></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications | Ramesh Eerapagula</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    /* Page Header */
+    .page-header {
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+      top: -150px;
+      right: -150px;
+      border-radius: 50%;
+    }
+    
+    .page-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .page-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Stats Banner */
+    .stats-banner {
+      max-width: 1200px;
+      margin: -3rem auto 0;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    
+    /* Content */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .publication-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .publication-item:hover {
+      transform: translateX(10px);
+      border-left-color: var(--secondary);
+      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .pub-number {
+      position: absolute;
+      left: -15px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+    
+    .pub-authors {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+    
+    .pub-authors strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .pub-title {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    
+    .pub-journal {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1.2rem;
+      font-style: italic;
+    }
+    
+    .pub-footer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .pub-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    }
+    
+    .first-author-badge {
+      padding: 0.4rem 1rem;
+      background: rgba(236, 72, 153, 0.2);
+      color: var(--secondary);
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--secondary);
+    }
+    
+    .year-badge {
+      padding: 0.4rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      background: var(--dark-light);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .footer-text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+    
+    /* Mobile */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 968px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .publication-item {
+        padding: 2rem 1.5rem;
+      }
+      
+      .pub-number {
+        left: -10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">RE</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html" class="active">Publications</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
 
-<nav><div class="nav">
-<div class="logo">Ramesh Eerapagula</div>
-<ul class="links">
-<li><a href="index.html">Home</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="publications.html">Publications</a></li>
-<li><a href="software.html">Software</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</div></nav>
-
-<div class="section">
-  <div class="card">
-    <h1>Publications</h1>
-    <p>See full list: https://scholar.google.com/citations?user=CYTimUMAAAAJ&hl=en</p>
-    <div class="pub"><b>Eerapagula R</b> et al. Genome-wide analysis of NAC transcription factors in grain amaranth. Scientific Reports (2025). DOI: https://doi.org/10.1038/s41598-025-23630-7</div>
-    <div class="pub">Samala TR et al. α‑amylase inhibitors from Halodule uninervis. Computational Biology and Chemistry (2026). DOI: https://doi.org/10.1016/j.compbiolchem.2025.108848</div>
-    <div class="pub">Bagga P et al. SMN1 protein structural insights. Journal of Neonatal Surgery (2025).</div>
-    <div class="pub">Verma S et al. Meta‑QTL analysis in sorghum. Cereal Research Communications (2025).</div>
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><span class="gradient-text">Publications</span></h1>
+    <p>Peer-reviewed research contributions in computational biology and plant genomics</p>
   </div>
-</div>
-<footer>© 2026 Ramesh Eerapagula</footer>
-</body></html>
+
+  <!-- Stats Banner -->
+  <div class="stats-banner">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Total Publications</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2025-26</span>
+        <span class="stat-label">Recent Years</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">1</span>
+        <span class="stat-label">First Author</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="publication-item">
+      <div class="pub-number">1</div>
+      <div class="pub-authors">
+        <strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., & Mahato, A. K.
+      </div>
+      <div class="pub-title">
+        Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features.
+      </div>
+      <div class="pub-journal">
+        <em>Scientific Reports</em>, 15(1), 39968. (2025)
+      </div>
+      <div class="pub-footer">
+        <a href="https://doi.org/10.1038/s41598-025-23630-7" class="pub-link" target="_blank">
+          📄 View Publication
+        </a>
+        <span class="first-author-badge">First Author</span>
+        <span class="year-badge">2025</span>
+      </div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="pub-number">2</div>
+      <div class="pub-authors">
+        Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., & Sen, P.
+      </div>
+      <div class="pub-title">
+        6-O-acetyldaidzein and frangulin B from Halodule uninervis as novel α-amylase inhibitors: A molecular dynamics perspective.
+      </div>
+      <div class="pub-journal">
+        <em>Computational Biology and Chemistry</em>, 121, 108848. (2026)
+      </div>
+      <div class="pub-footer">
+        <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848" class="pub-link" target="_blank">
+          📄 View Publication
+        </a>
+        <span class="year-badge">2026</span>
+      </div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="pub-number">3</div>
+      <div class="pub-authors">
+        Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., et al.
+      </div>
+      <div class="pub-title">
+        Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy.
+      </div>
+      <div class="pub-journal">
+        <em>Journal of Neonatal Surgery</em>, 14(13S), 1066–1077. (2025)
+      </div>
+      <div class="pub-footer">
+        <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935" class="pub-link" target="_blank">
+          📄 View Publication
+        </a>
+        <span class="year-badge">2025</span>
+      </div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="pub-number">4</div>
+      <div class="pub-authors">
+        Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, et al.
+      </div>
+      <div class="pub-title">
+        Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum (Sorghum bicolor L. Moench) through meta-QTL analysis.
+      </div>
+      <div class="pub-journal">
+        <em>Cereal Research Communications</em>, 53(2), 757–769. (2025)
+      </div>
+      <div class="pub-footer">
+        <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5" class="pub-link" target="_blank">
+          📄 View Publication
+        </a>
+        <span class="year-badge">2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-text">© 2025 Ramesh Eerapagula. All rights reserved.</p>
+  </footer>
+</body>
+</html>

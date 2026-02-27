@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Ramesh Eerapagula</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --gray: #64748b;
+      --light: #f1f5f9;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    /* Navigation - CONSISTENT */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a.active {
+      color: #fff;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
+    /* Page Header */
+    .page-header {
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+      top: -150px;
+      right: -150px;
+      border-radius: 50%;
+    }
+    
+    .page-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .page-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Content Section */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .intro-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    
+    .intro-box p {
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .intro-box p:last-child {
+      margin-bottom: 0;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+    }
+    
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    
+    .research-areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .research-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    
+    .research-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+    
+    .research-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .research-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .research-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+      margin: 3rem 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -44px;
+      top: 30px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid var(--dark);
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+    
+    .timeline-item h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+    
+    .timeline-item p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .stat-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    
+    .stat-box:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: 4px solid var(--secondary);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+    }
+    
+    .highlight-box h3 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+    
+    .highlight-box p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      background: var(--dark-light);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+    
+    .footer-text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+    
+    /* Mobile Responsive */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 968px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .research-areas {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline {
+        padding-left: 2rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">RE</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1><span class="gradient-text">About Me</span></h1>
+    <p>Bridging computational biology and AI to unlock plant genomic insights</p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="intro-box">
+      <p>
+        I am a PhD Research Scholar dedicated to advancing the frontiers of computational biology and plant genomics through innovative applications of machine learning and deep learning technologies. My work bridges the gap between biological complexity and computational analysis, leveraging data-driven approaches to unlock insights into plant systems.
+      </p>
+      <p>
+        My research journey is driven by a passion for understanding the molecular mechanisms underlying plant defense and agronomic performance. By integrating genome-wide analyses with predictive modeling, I aim to contribute to sustainable agriculture and crop improvement strategies that address global food security challenges.
+      </p>
+    </div>
+    
+    <h2><span class="gradient-text">Research Philosophy</span></h2>
+    <div class="highlight-box">
+      <h3>Integrative Computational Approaches</h3>
+      <p>
+        I believe in the power of interdisciplinary research that combines genomics, bioinformatics, and artificial intelligence. My approach focuses on developing robust computational frameworks that can extract meaningful biological insights from complex high-throughput data, ultimately translating discoveries into practical applications for crop improvement.
+      </p>
+    </div>
+    
+    <h2><span class="gradient-text">Research Focus Areas</span></h2>
+    <div class="research-areas">
+      <div class="research-card">
+        <h3>Plant Immunity</h3>
+        <p>Investigating molecular mechanisms of plant defense signaling, including pattern-triggered immunity (PTI) and effector-triggered immunity (ETI) pathways.</p>
+      </div>
+      
+      <div class="research-card">
+        <h3>Computational Genomics</h3>
+        <p>Conducting genome-wide analyses of gene families, transcription factors, and resistance genes to understand evolutionary patterns and functional diversity.</p>
+      </div>
+      
+      <div class="research-card">
+        <h3>Deep Learning Applications</h3>
+        <p>Developing neural network models for gene function prediction, expression pattern analysis, and protein structure-function relationships.</p>
+      </div>
+      
+      <div class="research-card">
+        <h3>Crop Improvement</h3>
+        <p>Leveraging computational tools to identify genetic markers and regulatory elements associated with agronomically important traits and stress tolerance.</p>
+      </div>
+    </div>
+    
+    <h2><span class="gradient-text">Academic Journey</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>PhD Research Scholar</h3>
+        <p>Specializing in computational biology, machine learning applications in genomics, and plant defense mechanisms. Conducting cutting-edge research in genome-wide analysis and predictive modeling.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3>Key Research Contributions</h3>
+        <p>Published multiple peer-reviewed articles on transcription factor families, molecular dynamics simulations, and genomic regions associated with stress tolerance in crop species.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <h3>Technical Expertise Development</h3>
+        <p>Acquired advanced proficiency in Python-based data science, deep learning frameworks, high-performance computing, and bioinformatics tools for large-scale genomic analysis.</p>
+      </div>
+    </div>
+    
+    <h2><span class="gradient-text">Research Impact</span></h2>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-number">4+</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      
+      <div class="stat-box">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Major Projects</span>
+      </div>
+      
+      <div class="stat-box">
+        <span class="stat-number">Multiple</span>
+        <span class="stat-label">Gene Families Analyzed</span>
+      </div>
+    </div>
+    
+    <h2><span class="gradient-text">Vision & Goals</span></h2>
+    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 1.5rem;">
+      My long-term vision is to contribute to the development of climate-resilient crops through computational approaches that accelerate breeding programs and genetic engineering strategies. I am committed to open science and collaborative research that pushes the boundaries of what's possible in computational biology.
+    </p>
+    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 3rem;">
+      I aim to continue building expertise at the intersection of biology and artificial intelligence, developing tools and methodologies that can be applied broadly across plant science research and agricultural biotechnology.
+    </p>
+    
+    <div class="highlight-box">
+      <h3>Collaboration & Opportunities</h3>
+      <p>
+        I am always interested in collaborative research opportunities, knowledge exchange, and discussions about innovative applications of computational methods in biology. Feel free to reach out if you'd like to discuss potential collaborations or have questions about my research.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-text">© 2025 Ramesh Eerapagula. All rights reserved.</p>
+  </footer>
+</body>
+</html>
