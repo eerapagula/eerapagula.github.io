@@ -63,6 +63,7 @@
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
     
     .nav-links a {
@@ -98,6 +99,15 @@
       width: 100%;
     }
     
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
     /* Hero Section */
     .hero {
       min-height: 100vh;
@@ -115,8 +125,8 @@
       width: 500px;
       height: 500px;
       background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-      top: -200px;
-      right: -200px;
+      top: -100px;
+      right: -100px;
       border-radius: 50%;
     }
     
@@ -133,6 +143,7 @@
     
     .hero-content {
       max-width: 1400px;
+      width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
@@ -353,15 +364,6 @@
     }
     
     /* Mobile Responsive */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
     @media (max-width: 968px) {
       .nav-links {
         display: none;
