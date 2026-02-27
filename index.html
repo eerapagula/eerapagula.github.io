@@ -63,7 +63,6 @@
       display: flex;
       gap: 2rem;
       list-style: none;
-      align-items: center;
     }
     
     .nav-links a {
@@ -97,15 +96,6 @@
     .nav-links a:hover::after,
     .nav-links a.active::after {
       width: 100%;
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
     }
     
     /* Hero Section */
@@ -143,7 +133,6 @@
     
     .hero-content {
       max-width: 1400px;
-      width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
@@ -364,6 +353,15 @@
     }
     
     /* Mobile Responsive */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
     @media (max-width: 968px) {
       .nav-links {
         display: none;
@@ -449,37 +447,37 @@
     <h2 class="section-title"><span class="gradient-text">Explore My Work</span></h2>
     <div class="links-grid">
       <a href="about.html" class="link-card">
-        <span class="link-icon">👤</span>
+        <span class="link-icon"></span>
         <h3>About Me</h3>
         <p>Learn about my research journey and academic background</p>
       </a>
       
       <a href="skills.html" class="link-card">
-        <span class="link-icon">🔧</span>
+        <span class="link-icon"></span>
         <h3>Skills & Expertise</h3>
         <p>Technical capabilities in computational biology and AI</p>
       </a>
       
       <a href="projects.html" class="link-card">
-        <span class="link-icon">🚀</span>
+        <span class="link-icon"></span>
         <h3>Projects</h3>
         <p>Featured research projects and initiatives</p>
       </a>
       
       <a href="publications.html" class="link-card">
-        <span class="link-icon">📚</span>
+        <span class="link-icon"></span>
         <h3>Publications</h3>
         <p>Peer-reviewed research contributions</p>
       </a>
       
       <a href="research.html" class="link-card">
-        <span class="link-icon">🔬</span>
+        <span class="link-icon"></span>
         <h3>Research Statement</h3>
         <p>My vision for computational plant biology</p>
       </a>
       
       <a href="contact.html" class="link-card">
-        <span class="link-icon">📧</span>
+        <span class="link-icon"></span>
         <h3>Contact</h3>
         <p>Let's collaborate and connect</p>
       </a>
