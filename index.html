@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramesh Eerapagula | Computational Biologist</title>
+<meta name="description" content="PhD researcher in computational biology and machine learning for genomics and structural bioinformatics.">
+<style>
+:root { --primary:#6366f1; --secondary:#ec4899; --accent:#06b6d4; --dark:#0f172a; --dark-light:#1e293b; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--dark); color:#fff; overflow-x:hidden; line-height:1.7; }
+nav { position:fixed; top:0; width:100%; background:rgba(15,23,42,0.95); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid rgba(255,255,255,0.1); }
+.nav-container { max-width:1400px; margin:0 auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+.logo { font-size:1.5rem; font-weight:700; background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-decoration:none; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { color:rgba(255,255,255,0.8); text-decoration:none; font-weight:500; transition:color 0.3s; }
+.nav-links a:hover { color:var(--accent); }
+.hero { min-height:100vh; display:flex; align-items:center; padding:8rem 2rem 4rem; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; width:600px; height:600px; background:radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%); top:-100px; right:-100px; animation:pulse 8s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{transform:scale(1);opacity:0.15;} 50%{transform:scale(1.1);opacity:0.2;} }
+.hero-container { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; position:relative; z-index:1; }
+.hero-content h1 { font-size:4rem; font-weight:800; margin-bottom:1rem; line-height:1.1; }
+.gradient-text { background:linear-gradient(135deg,var(--primary),var(--secondary),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-content .subtitle { font-size:1.4rem; color:var(--accent); margin-bottom:1.5rem; font-weight:600; }
+.hero-content p { font-size:1.1rem; color:rgba(255,255,255,0.8); margin-bottom:2rem; }
+.cta-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn { padding:1rem 2rem; border-radius:50px; font-weight:600; text-decoration:none; transition:all 0.3s; display:inline-flex; align-items:center; gap:0.5rem; }
+.btn-primary { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; box-shadow:0 10px 30px rgba(99,102,241,0.3); }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(99,102,241,0.5); }
+.btn-secondary { background:rgba(255,255,255,0.1); color:#fff; border:2px solid rgba(255,255,255,0.2); }
+.btn-secondary:hover { background:rgba(255,255,255,0.15); border-color:var(--primary); }
+.profile-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:2rem; text-align:center; }
+.profile-photo { width:220px; height:220px; border-radius:50%; border:4px solid var(--primary); margin:0 auto 1.5rem; object-fit:cover; box-shadow:0 10px 40px rgba(99,102,241,0.3); }
+.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
+.stat-number { font-size:2rem; font-weight:700; background:linear-gradient(135deg,var(--primary),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:block; }
+.stat-label { color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:0.3rem; }
+section.block { padding:5rem 2rem; }
+section.block.alt { background:var(--dark-light); }
+.section-container { max-width:1200px; margin:0 auto; }
+.section-title { font-size:2.3rem; margin-bottom:2.5rem; text-align:center; }
+.about-content { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-left:4px solid var(--primary); border-radius:15px; padding:2.5rem; margin-bottom:3rem; }
+.about-content p { color:rgba(255,255,255,0.85); font-size:1.05rem; margin-bottom:1.2rem; }
+.research-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+.research-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:15px; padding:1.8rem; transition:all 0.3s; }
+.research-card:hover { transform:translateY(-6px); border-color:var(--primary); }
+.research-card h3 { font-size:1.15rem; color:var(--accent); margin-bottom:0.8rem; }
+.research-card p { color:rgba(255,255,255,0.7); font-size:0.95rem; }
+.publication-item { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-left:4px solid var(--primary); border-radius:15px; padding:1.8rem; margin-bottom:1.2rem; transition:all 0.3s; }
+.publication-item:hover { transform:translateX(8px); border-left-color:var(--secondary); }
+.pub-title { font-size:1.1rem; color:#fff; margin-bottom:0.6rem; font-weight:600; }
+.pub-authors { color:rgba(255,255,255,0.7); margin-bottom:0.3rem; font-size:0.95rem; }
+.pub-authors strong { color:var(--primary); }
+.pub-journal { color:rgba(255,255,255,0.6); font-style:italic; font-size:0.9rem; margin-bottom:0.9rem; }
+.pub-link { display:inline-block; padding:0.4rem 1.2rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; text-decoration:none; border-radius:20px; font-size:0.85rem; font-weight:600; }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+.skill-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:15px; padding:1.8rem; }
+.skill-card h3 { font-size:1.15rem; margin-bottom:1rem; color:var(--accent); }
+.skill-card ul { list-style:none; }
+.skill-card li { padding:0.4rem 0 0.4rem 1.3rem; position:relative; color:rgba(255,255,255,0.75); font-size:0.95rem; }
+.skill-card li::before { content:'→'; position:absolute; left:0; color:var(--primary); }
+.contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+.contact-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:15px; padding:2rem; text-align:center; transition:all 0.3s; }
+.contact-card:hover { transform:translateY(-6px); border-color:var(--primary); }
+.contact-card h3 { font-size:1.1rem; margin-bottom:1rem; }
+.contact-link { display:inline-block; padding:0.7rem 1.6rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; text-decoration:none; border-radius:25px; font-weight:600; font-size:0.95rem; }
+footer { padding:2rem; background:var(--dark-light); text-align:center; border-top:1px solid rgba(255,255,255,0.1); }
+.footer-text { color:rgba(255,255,255,0.5); font-size:0.9rem; }
+@media (max-width:968px) {
+  .nav-links { display:none; }
+  .hero-container { grid-template-columns:1fr; text-align:center; }
+  .hero-content h1 { font-size:2.5rem; }
+  .profile-photo { width:180px; height:180px; }
+  .section-title { font-size:1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="#top" class="logo">RE</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>Ramesh <span class="gradient-text">Eerapagula</span></h1>
+      <p class="subtitle">Computational Biologist | Machine Learning for Genomics</p>
+      <p>PhD researcher at CDFD Hyderabad developing machine learning and deep learning methods for genome-scale sequence analysis, comparative genomics, and structural bioinformatics.</p>
+      <div class="cta-buttons">
+        <a href="#publications" class="btn btn-primary">Publications</a>
+        <a href="Ramesh_CV.pdf" class="btn btn-secondary">Download CV</a>
+      </div>
+    </div>
+    <div class="profile-card">
+      <img src="your-photo.jpg" alt="Ramesh Eerapagula" class="profile-photo">
+      <div class="stats-grid">
+        <div><span class="stat-number">4+</span><div class="stat-label">Publications</div></div>
+        <div><span class="stat-number">PhD</span><div class="stat-label">CDFD Hyderabad</div></div>
+        <div><span class="stat-number">2026</span><div class="stat-label">Expected</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="about">
+  <div class="section-container">
+    <h2 class="section-title"><span class="gradient-text">About</span></h2>
+    <div class="about-content">
+      <p>I am a PhD researcher at the Centre for DNA Fingerprinting and Diagnostics (CDFD), Hyderabad, working at the intersection of computational biology and machine learning. My research develops and applies deep learning methods to problems in genome-scale sequence analysis, transcription factor biology, and structural bioinformatics.</p>
+      <p>Recent work spans genome-wide characterization of regulatory gene families, molecular dynamics of disease-relevant proteins, and sequence-based deep learning. I am interested in extending these methods to single-cell genomics, protein language models, and network-based function prediction.</p>
+    </div>
+    <div class="research-grid" id="research">
+      <div class="research-card"><h3>Deep Learning for Sequences</h3><p>CNN and transformer architectures for genomic and protein sequence modeling, including cis-regulatory element prediction and function classification.</p></div>
+      <div class="research-card"><h3>Comparative Genomics</h3><p>Genome-wide gene family identification, phylogenetic reconstruction, synteny analysis, and evolutionary characterization across plant and animal lineages.</p></div>
+      <div class="research-card"><h3>Transcriptomics & Networks</h3><p>RNA-seq differential expression, co-expression network analysis (WGCNA), and integrative multi-omic analysis of stress and disease states.</p></div>
+      <div class="research-card"><h3>Structural Bioinformatics</h3><p>Molecular dynamics simulations, protein-ligand interaction studies, and structural characterization of disease-associated proteins.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="publications">
+  <div class="section-container">
+    <h2 class="section-title"><span class="gradient-text">Publications</span></h2>
+
+    <div class="publication-item">
+      <div class="pub-title">Genome-wide analysis of NAC transcription factors in grain amaranth reveals structural diversity and regulatory features</div>
+      <div class="pub-authors"><strong>Eerapagula, R.</strong>, Singh, A., Maurya, A., Singh, R., Singh, N. K., &amp; Mahato, A. K.</div>
+      <div class="pub-journal">Scientific Reports, 15(1), 39968 (2025)</div>
+      <a href="https://doi.org/10.1038/s41598-025-23630-7" class="pub-link" target="_blank">View →</a>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-title">6-O-acetyldaidzein and frangulin B from Halodule uninervis as novel α-amylase inhibitors: a molecular dynamics perspective</div>
+      <div class="pub-authors">Samala, T. R., Patil, K. S., John, E. T., <strong>Eerapagula, R.</strong>, Mahato, A. K., &amp; Sen, P.</div>
+      <div class="pub-journal">Computational Biology and Chemistry, 121, 108848 (2026)</div>
+      <a href="https://doi.org/10.1016/j.compbiolchem.2025.108848" class="pub-link" target="_blank">View →</a>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-title">Molecular dynamics simulation and structural insights into the SMN1 protein involved in the pathogenesis of spinal muscular atrophy</div>
+      <div class="pub-authors">Bagga, P., Singh, S., Ram, G., Kapil, S., <strong>Eerapagula, R.</strong>, Puri, P., et al.</div>
+      <div class="pub-journal">Journal of Neonatal Surgery, 14(13S), 1066–1077 (2025)</div>
+      <a href="https://www.jneonatalsurg.com/index.php/jns/article/view/3935" class="pub-link" target="_blank">View →</a>
+    </div>
+
+    <div class="publication-item">
+      <div class="pub-title">Uncovering key genomic regions for agronomical traits and stress tolerance in sorghum through meta-QTL analysis</div>
+      <div class="pub-authors">Verma, S., Quaiyum, Z., Prasad, B. D., Sahni, S., Naik, Y. D., Mane, R. S., <strong>Eerapagula, R.</strong>, et al.</div>
+      <div class="pub-journal">Cereal Research Communications, 53(2), 757–769 (2025)</div>
+      <a href="https://link.springer.com/article/10.1007/s42976-024-00585-5" class="pub-link" target="_blank">View →</a>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="skills">
+  <div class="section-container">
+    <h2 class="section-title"><span class="gradient-text">Technical Skills</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Machine Learning</h3>
+        <ul>
+          <li>PyTorch, scikit-learn, JAX</li>
+          <li>CNNs, transformers, GNNs</li>
+          <li>Protein / DNA language models</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Genomics &amp; Transcriptomics</h3>
+        <ul>
+          <li>Gene family &amp; phylogenetic analysis</li>
+          <li>RNA-seq, DESeq2, WGCNA</li>
+          <li>BLAST, HMMER, InterProScan, MAFFT, IQ-TREE</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Structural Bioinformatics</h3>
+        <ul>
+          <li>Molecular dynamics (GROMACS, AMBER)</li>
+          <li>Protein-ligand docking</li>
+          <li>Structure-based analysis</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Programming &amp; Infrastructure</h3>
+        <ul>
+          <li>Python, R, Bash; Linux</li>
+          <li>Snakemake / Nextflow pipelines</li>
+          <li>SLURM / HPC, Git, Docker</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="section-container">
+    <h2 class="section-title"><span class="gradient-text">Contact</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>Email</h3><a href="mailto:ramesheerapagula76@gmail.com" class="contact-link">ramesheerapagula76@gmail.com</a></div>
+      <div class="contact-card"><h3>GitHub</h3><a href="https://github.com/eerapagula" class="contact-link" target="_blank">@eerapagula</a></div>
+      <div class="contact-card"><h3>Google Scholar</h3><a href="#" class="contact-link" target="_blank">Add link</a></div>
+      <div class="contact-card"><h3>ORCID</h3><a href="#" class="contact-link" target="_blank">Add link</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-text">© 2026 Ramesh Eerapagula</p>
+</footer>
+
+</body>
+</html>
